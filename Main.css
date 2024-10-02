@@ -297,4 +297,13 @@ body{
 
 }
    
-   
+.block.draggable{
+    --block-bg: rgba();
+    cursor: pointer;
+
+}
+
+.block.draggable:nth-child(1){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
