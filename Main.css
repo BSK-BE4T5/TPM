@@ -85,7 +85,7 @@ body{
     order:var(--order);
 
 }
-
+/*
 .block.target:nth-child(9) { 
     order:var(--order);
 
@@ -170,7 +170,7 @@ body{
     order:var(--order);
 
 }
-
+*/
 
 .block.target.dropped:nth-child(1) { 
     --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
@@ -211,7 +211,7 @@ body{
     --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 
 }
-
+/*
 .block.target.dropped:nth-child(9) { 
     --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 
@@ -296,7 +296,7 @@ body{
     --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 
 }
-   
+ */  
 .block.draggable{
     --block-bg: rgba();
     cursor: pointer;
@@ -342,7 +342,7 @@ body{
     --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 
 }
-
+/*
 .block.draggable:nth-child(9){
     --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 
@@ -427,7 +427,7 @@ body{
     --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
 
 }
-
+*/
 
 .block.animated{
     transition: 0.3s ease-out;

@@ -189,3 +189,117 @@ var dropDown = function (draggable, droppable){
 };
 
 
+var listenDragEvent = function () {
+  draggables.forEach(function(draggable){
+    var draggie = draggable.draggie;
+    draggie.on('dragEnd', function (){
+      var draggableElement = this.element;
+      var dragId = ParseInt(draggableElement.dataset.id);
+      var correspondingDroppable = droppables[dragId - 1];
+      if (correspondingDroppable.isDroppable(draggableElement)){
+        dropDown(draggable, correspondingDroppable);
+        score += SCOREINC;
+        scoreNumber.textContent=""+score;
+        winGameJudge();
+      } else 
+      {
+        moveBack(draggable);
+      }
+    });
+  });
+
+};
+
+var recoverBlocks = function (){
+  draggables.forEach(function(draggable){
+    moveBack(draggable);
+    var draggableEl = draggable.draggableEl;
+    draggableEl.classList.remove('animated');
+    draggableEl.removeAtrribute('transparent');
+    
+  });
+  droppables.forEach(function(dorppable){
+    var droppableEl = droppable.droppableEl;
+    droppableEl.classList.remove('dropped');
+
+  });
+
+};
+
+var cleanData = function (){
+  recoverBlocks();
+  shuffleTargets();
+  score = 0;
+  timeLeft = Time;
+  win = false;
+  scoreNumber.textContent = "" + score;
+  timeLeftNumber.textContent= "" + timeLeft;
+  youWin.setAttribute("hidden", "");
+  youLose.setAttribute("hidden","");
+
+};
+
+var startGame = function (){
+  enableBlocks();
+  timer = setInterval(function(){
+    timeLeft--;
+    timeLeftNumber.textContent = "" + timeLeft;
+    if (timeLeft === 0){
+      clearInterval(timer);
+      endGame();
+    }
+
+  }, 1000);
+
+};
+
+var endGame = function(){
+  disableBlocks();
+  showFinalScore();
+  startBtn.removeAttribute("transparent");
+  startBtn.removeAttribute("disabled");
+};
+
+var winGameJudge = function (){
+  if (score === WINSCORE){
+    win = true;
+    endGame();
+  }
+};
+
+var showFinalScore = function(){
+  clearInterval(timer);
+  if (win){
+    youWin.removeAttribute("hidden");
+
+  }else{
+    youLose.removeAttribute("hidden");
+  }
+  finalScore.textContent = "" + score;
+  finalScoreDialog.removeAttribute("hidden");
+};
+
+var closeFinalScore = function (){
+  finalScoreDialog.setAttribute("hidden","");
+  cleanData();
+};
+
+var listenGameStart = function () {
+  startBtn.addEventListener("click", function(){
+    startBtn.setAttribute("transparent", "");
+    startBtn.setAttribute("disabled","");
+    startGame();
+  });
+
+};
+
+var main = function () {
+  setRandomBlocksSizes();
+  disableBlocks();
+  cleanData();
+  listenDragEvent();
+  listenGameStart();
+
+};
+
+main();

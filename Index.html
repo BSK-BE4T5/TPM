@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" media="screen" href="Main.css">
+    
     <link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
     <meta name="apple-mobile-web-app-title" content="CodePen">
     <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
@@ -12,6 +12,509 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/alphardex/aqua.css/dist/aqua.min.css'>
 </head>
+<style>
+    body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin:0;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+
+}
+
+[transparent]{
+    opacity: 0 !important;
+
+}
+
+[disabled]{
+    pointer-events: none !important;
+
+}
+.block {
+    position: relative;
+    width: var(--width, 0);
+    height: var(--width, 0);
+    background: var(--block-bg);
+    border-radius: var(--border-radius, 0);
+
+}
+
+.block::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    display: left;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+
+}
+
+.block.target {
+    --block-bg: rgba(205,210,218,0.6);
+    z-index: -1;
+}
+
+.block.target:nth-child(1) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(2) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(3) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(4) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(5) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(6) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(7) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(8) { 
+    order:var(--order);
+
+}
+/*
+.block.target:nth-child(9) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(10) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(11) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(12) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(13) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(14) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(15) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(16) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(17) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(18) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(19) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(20) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(21) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(22) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(23) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(24) { 
+    order:var(--order);
+
+}
+
+.block.target:nth-child(25) { 
+    order:var(--order);
+
+}
+*/
+
+.block.target.dropped:nth-child(1) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(2) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(3) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(4) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(5) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(6) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(7) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(8) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+/*
+.block.target.dropped:nth-child(9) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(10) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(11) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(12) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(13) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(14) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(15) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(16) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(17) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(18) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(19) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(20) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(21) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(22) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(23) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(24) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.target.dropped:nth-child(25) { 
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+ */  
+.block.draggable{
+    --block-bg: rgba();
+    cursor: pointer;
+
+}
+
+.block.draggable:nth-child(1){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(2){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(3){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(4){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(5){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(6){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(7){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(8){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+/*
+.block.draggable:nth-child(9){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(10){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(11){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(12){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(13){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(14){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(15){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(16){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(17){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(18){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(19){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(20){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(21){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(22){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(23){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(24){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+
+.block.draggable:nth-child(25){
+    --block-bg: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+}
+*/
+
+.block.animated{
+    transition: 0.3s ease-out;
+
+}
+
+.draggable-blocks, .target-blocks{
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+    gap: 1.5rem;
+
+}
+
+.game {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 3rem ;
+}
+
+#start {
+    transition: 0.3s;
+    
+}
+
+.statistics{
+    display: flex;
+    justify-content: space-between;
+    color:white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    margin-bottom: 3rem;
+
+}
+
+.statistics .score{
+    margin-right: 100px;
+
+}
+
+#final-score-dialog{
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translate(-50%, -50%);
+    background: white;
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.8);
+    border-radius: 0;
+    white-space: nowrap
+
+}
+
+#final-score-dialog .dialog-content {
+    gap: 12px;
+    padding: 18px 64px;
+
+}
+
+#final-score-dialog .dialog-body{
+    text-align:center;
+
+}
+
+@keyframes shadow-burst {
+    to {
+        box-shadow: 0 0 25px 50px rgba(255, 255,255, 0.6);
+
+    }
+
+}
+</style>
 <body translate="no">
 
     <div class="statistics">
@@ -32,7 +535,7 @@
             <div class="block target" data-id="6"></div>
             <div class="block target" data-id="7"></div>
             <div class="block target" data-id="8"></div>
-            <div class="block target" data-id="9"></div>
+            <!--<div class="block target" data-id="9"></div>
             <div class="block target" data-id="10"></div>
             <div class="block target" data-id="11"></div>
             <div class="block target" data-id="12"></div>
@@ -48,7 +551,7 @@
             <div class="block target" data-id="22"></div>
             <div class="block target" data-id="23"></div>
             <div class="block target" data-id="24"></div>
-            <div class="block target" data-id="25"></div>
+            <div class="block target" data-id="25"></div>-->
         </div>
 
         <div class="draggable-blocks"> 
@@ -60,7 +563,7 @@
             <div class="block draggable" data-id="6"></div>
             <div class="block draggable" data-id="7"></div>
             <div class="block draggable" data-id="8"></div>
-            <div class="block draggable" data-id="9"></div>
+            <!--<div class="block draggable" data-id="9"></div>
             <div class="block draggable" data-id="10"></div>
             <div class="block draggable" data-id="11"></div>
             <div class="block draggable" data-id="12"></div>
@@ -76,7 +579,7 @@
             <div class="block draggable" data-id="22"></div>
             <div class="block draggable" data-id="23"></div>
             <div class="block draggable" data-id="24"></div>
-            <div class="block draggable" data-id="25"></div>
+            <div class="block draggable" data-id="25"></div>-->
         </div>
     </div>   
     <button class="btn btn-primary" id="start">start</button>
@@ -100,5 +603,311 @@
 </body>
 <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
 <script src='https://cdn.bootcdn.net/ajax/libs/draggabilly/2.3.0/draggabilly.pkgd.min.js'></script>
-<script src="Main.js"></script>
+<script id="rendered-js">
+    "use sctrict";
+
+var __assign = this && this._assing || function() {
+  __assign = Object.assign || function (t){
+    for (var s, i = 1, n = arguments.length; i<n; i++){
+      s = arguments[i];
+      for (var p in s ) if (Object.prototype.hasOwnProperty.call(s, p))
+        t[p] = s[p];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+
+var shuffle = function(_a){
+  var _b;
+  var arr = _a.slice(0);
+  while (m) {
+    var i = Math.floor(Math.random() * m--);
+    _b = [arr[i], arr[m]], arr[m] = _b[0], arr[i] = _b[1];
+    
+  }
+  return arr;
+
+};
+
+var getOffset = function(el) {
+
+  var offset = el.getBoundingClientRect();
+  return {top: offset.top - window.scrollY, left: offset.left - window.scrollX };
+};
+
+var randomInArrayInRange = function (min, max, n){
+  if (n === void 0) {n = 1;}
+
+  return Array.from({length:n},function(){return Math.floor(Math.random()*(max-min+1))+min;});
+
+
+};
+
+var Droppable = /** @class */function(){
+  function Droppable (el) {
+    this.droppableEl = el;
+  }
+  Droppable.prototype.isDroppable = function (droppableEl) {
+    var draggableOffset = getOffset(draggableEl);
+    var droppableOffset = getOffset(this.droppableEl);
+
+    var _a = [draggableEl.offsetwidth, draggableEl.offsetHeight], draggablewidth = _a[0], draggableHeight =  _a[1];
+    var _b = [this.droppableEl.offsetwidth, this.droppableEl.offsetHeight], droppableWidth = _b[0], droppableHeight =  _b[1];
+
+    return !(droppableOffset.left > draggableOffset.left + draggableWidth - draggablewidth - draggableWidth / 2 || 
+
+      droppableOffset.left + droppableWidt < draggableOffset.left + draggableWidth / 2 ||
+
+      droppableOffset.top > draggableOffset.top + draggableHeight - draggableHeight /2 ||
+
+      droppableOffset.top + droppableHeight < draggableOffset.top + draggableHeight /2);
+
+  };
+  return Droppable;
+
+
+
+}();
+
+var Draggable = /**@class */function (){
+  function Draggable(el){
+    this.draggableEl = el;
+    this.draggie = new draggabilly(el);
+    this.originPos = __assign
+    
+
+  }
+  return Draggable;
+
+
+
+}();
+
+var randomBlockWidths = randomInArrayInRange(30, 60, 10);
+
+var randomBlockBorderRadiuses = randomInArrayInRange(1,30,10);
+
+var draggableBlocks = document.querySelectorAll('.block.draggable');
+
+var targetBlocks = document.querySelectorAll('block.target');
+
+var startBtn = document.querySelector('#start');
+
+var scoreNumber = document.querySelector(".score-number");
+
+var timeLeftNumber = document.querySelector("time-left-number");
+
+var finalScoreDialog = document.querySelector("#final-score-dialog");
+
+var finalScore = document.querySelector(".final-score");
+
+var youWin = document.querySelector(".you-win");
+
+var youLose = document.querySelector("you.lose");
+
+var draggables = Array.from(draggableBlocks).map(function(block){return new Draggable(block);});
+
+var droppables = Array.from(targetBlocks).map(function (block){return new Droppable(block);});
+
+var score = 0;
+
+var win = false;
+
+var SCOREINC = 10;
+
+var WINSCORE = SCOREINC * targetBlocks.length;
+
+var TIME = 30;
+
+var INTERVAL = 600;
+
+var timer;
+
+var timeLeft = TIME;
+
+var enableBlocks = function(){
+  draggables.forEach(function (draggable){
+    draggable.draggableEl.removeAttribute('disabled');
+
+  });
+
+};
+
+var disableBlocks = function (){
+  draggables.forEach(function (draggable){
+    draggable.draggableEl.setAttribute('disabled', '');
+
+  });
+};
+
+var shuffleTargets = function (){
+  var cardIndexes = Array.from(Array(targetBlocks.length).keys());
+  var shufferedIndexs = shuffle(cardIndexes);
+
+  targetBlocks.forEach(function(item, i){
+    return item.style.setProperty("--order", shufferedIndexs[i]);
+
+  });
+
+};
+
+var shuffleTargets = function () {
+  var cardIndexes = Array.from(Array(targetBlocks.length).keys());
+  var shufferedIndexs = shuffle(cardIndexes);
+  targetBlocks.forEach(function (item, i){
+    return item.style.setProperty("--order", shufferedIndexs[i]);
+  });
+
+};
+
+var setRandomSizes = function (elements) {
+  elements.forEach(function(item, i){
+    item.style.setProperty('--width', randomBlockWidths[i] + "px");
+    item.style.setProperty('--border-radius', randomBlockBorderRadiuses[1]+"px");
+  });
+
+};
+
+var setRandomBlocksSizes = function (){
+  setRandomSizes(draggableBlocks);
+  setRandomSizes(targetBlocks);
+
+
+};
+
+var moveBack = function (draggable) {
+  var draggableEl = draggable.draggableEl;
+  draggableEl.classList.add('animated');
+  draggableEl.style.left = "" + draggable.originPos.x;
+  draggableEl.style.top = "" + draggable.originPos.y;
+  draggableEl.addEventListener('transitioned', function (){
+    draggableEl.classList.remove(animated);
+  });
+};
+
+
+var dropDown = function (draggable, droppable){
+  var draggableEl = draggable.draggableEl;
+  draggableEl.setAttribute('transparent', '');
+  var droppableEl = droppable.droppableEl;
+  droppableEl.classList.add('dropped');
+};
+
+
+var listenDragEvent = function () {
+  draggables.forEach(function(draggable){
+    var draggie = draggable.draggie;
+    draggie.on('dragEnd', function (){
+      var draggableElement = this.element;
+      var dragId = ParseInt(draggableElement.dataset.id);
+      var correspondingDroppable = droppables[dragId - 1];
+      if (correspondingDroppable.isDroppable(draggableElement)){
+        dropDown(draggable, correspondingDroppable);
+        score += SCOREINC;
+        scoreNumber.textContent=""+score;
+        winGameJudge();
+      } else 
+      {
+        moveBack(draggable);
+      }
+    });
+  });
+
+};
+
+var recoverBlocks = function (){
+  draggables.forEach(function(draggable){
+    moveBack(draggable);
+    var draggableEl = draggable.draggableEl;
+    draggableEl.classList.remove('animated');
+    draggableEl.removeAtrribute('transparent');
+    
+  });
+  droppables.forEach(function(dorppable){
+    var droppableEl = droppable.droppableEl;
+    droppableEl.classList.remove('dropped');
+
+  });
+
+};
+
+var cleanData = function (){
+  recoverBlocks();
+  shuffleTargets();
+  score = 0;
+  timeLeft = Time;
+  win = false;
+  scoreNumber.textContent = "" + score;
+  timeLeftNumber.textContent= "" + timeLeft;
+  youWin.setAttribute("hidden", "");
+  youLose.setAttribute("hidden","");
+
+};
+
+var startGame = function (){
+  enableBlocks();
+  timer = setInterval(function(){
+    timeLeft--;
+    timeLeftNumber.textContent = "" + timeLeft;
+    if (timeLeft === 0){
+      clearInterval(timer);
+      endGame();
+    }
+
+  }, 1000);
+
+};
+
+var endGame = function(){
+  disableBlocks();
+  showFinalScore();
+  startBtn.removeAttribute("transparent");
+  startBtn.removeAttribute("disabled");
+};
+
+var winGameJudge = function (){
+  if (score === WINSCORE){
+    win = true;
+    endGame();
+  }
+};
+
+var showFinalScore = function(){
+  clearInterval(timer);
+  if (win){
+    youWin.removeAttribute("hidden");
+
+  }else{
+    youLose.removeAttribute("hidden");
+  }
+  finalScore.textContent = "" + score;
+  finalScoreDialog.removeAttribute("hidden");
+};
+
+var closeFinalScore = function (){
+  finalScoreDialog.setAttribute("hidden","");
+  cleanData();
+};
+
+var listenGameStart = function () {
+  startBtn.addEventListener("click", function(){
+    startBtn.setAttribute("transparent", "");
+    startBtn.setAttribute("disabled","");
+    startGame();
+  });
+
+};
+
+var main = function () {
+  setRandomBlocksSizes();
+  disableBlocks();
+  cleanData();
+  listenDragEvent();
+  listenGameStart();
+
+};
+
+main();
+</script>
 </html>
