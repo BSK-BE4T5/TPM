@@ -12,7 +12,7 @@ var __assign = this && this._assing || function() {
   return __assign.apply(this, arguments);
 };
 
-var shuffel = function(_a){
+var shuffle = function(_a){
   var _b;
   var arr = _a.slice(0);
   while (m) {
@@ -137,12 +137,55 @@ var disableBlocks = function (){
 
 var shuffleTargets = function (){
   var cardIndexes = Array.from(Array(targetBlocks.length).keys());
-  var shufferedIndexs = shuffel(cardIndexes);
+  var shufferedIndexs = shuffle(cardIndexes);
 
-  targetBlocks.forEach(function(item, i)){
-    return item.style.setProperty("--order", shu)
+  targetBlocks.forEach(function(item, i){
+    return item.style.setProperty("--order", shufferedIndexs[i]);
 
-  }
+  });
 
-}
+};
+
+var shuffleTargets = function () {
+  var cardIndexes = Array.from(Array(targetBlocks.length).keys());
+  var shufferedIndexs = shuffle(cardIndexes);
+  targetBlocks.forEach(function (item, i){
+    return item.style.setProperty("--order", shufferedIndexs[i]);
+  });
+
+};
+
+var setRandomSizes = function (elements) {
+  elements.forEach(function(item, i){
+    item.style.setProperty('--width', randomBlockWidths[i] + "px");
+    item.style.setProperty('--border-radius', randomBlockBorderRadiuses[1]+"px");
+  });
+
+};
+
+var setRandomBlocksSizes = function (){
+  setRandomSizes(draggableBlocks);
+  setRandomSizes(targetBlocks);
+
+
+};
+
+var moveBack = function (draggable) {
+  var draggableEl = draggable.draggableEl;
+  draggableEl.classList.add('animated');
+  draggableEl.style.left = "" + draggable.originPos.x;
+  draggableEl.style.top = "" + draggable.originPos.y;
+  draggableEl.addEventListener('transitioned', function (){
+    draggableEl.classList.remove(animated);
+  });
+};
+
+
+var dropDown = function (draggable, droppable){
+  var draggableEl = draggable.draggableEl;
+  draggableEl.setAttribute('transparent', '');
+  var droppableEl = droppable.droppableEl;
+  droppableEl.classList.add('dropped');
+};
+
 
