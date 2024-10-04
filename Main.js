@@ -94,4 +94,55 @@ var timeLeftNumber = document.querySelector("time-left-number");
 
 var finalScoreDialog = document.querySelector("#final-score-dialog");
 
-var fi
+var finalScore = document.querySelector(".final-score");
+
+var youWin = document.querySelector(".you-win");
+
+var youLose = document.querySelector("you.lose");
+
+var draggables = Array.from(draggableBlocks).map(function(block){return new Draggable(block);});
+
+var droppables = Array.from(targetBlocks).map(function (block){return new Droppable(block);});
+
+var score = 0;
+
+var win = false;
+
+var SCOREINC = 10;
+
+var WINSCORE = SCOREINC * targetBlocks.length;
+
+var TIME = 30;
+
+var INTERVAL = 600;
+
+var timer;
+
+var timeLeft = TIME;
+
+var enableBlocks = function(){
+  draggables.forEach(function (draggable){
+    draggable.draggableEl.removeAttribute('disabled');
+
+  });
+
+};
+
+var disableBlocks = function (){
+  draggables.forEach(function (draggable){
+    draggable.draggableEl.setAttribute('disabled', '');
+
+  });
+};
+
+var shuffleTargets = function (){
+  var cardIndexes = Array.from(Array(targetBlocks.length).keys());
+  var shufferedIndexs = shuffel(cardIndexes);
+
+  targetBlocks.forEach(function(item, i)){
+    return item.style.setProperty("--order", shu)
+
+  }
+
+}
+
